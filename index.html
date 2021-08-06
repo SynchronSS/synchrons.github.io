@@ -125,9 +125,14 @@ function getpattern(){
 		}
 	}
 	
+	counter = 0;
 	for (var i = 0; i<8; i++){
 		var imagehtml = '<img src="'+ finallist[i] +'.png" width="70" height="100%">';
 		document.getElementById("list1").innerHTML += imagehtml;
+		counter++;
+		if (counter == 4){
+			document.getElementById("list1").innerHTML += "<br>";
+		}
 	}
 }
 
