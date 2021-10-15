@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Drawing Simulator</h2>
+
+<p id="photolist"></p>
+<p id="buttonlist"></p>
+<p id="sentense1">第1, 2回合放牌次序:</p>
+<p id="list1"></p>
+<p id="sentense2">第3, 4回合放牌次序:</p>
+<p id="list2"></p>
+<p id="sentense3">第3, 4回合抽牌次序:</p>
+<p id="list3"></p>
+
+
+<br>
+
+<button id="getpattern">Get Pattern</button>
+<button id="nextset">Next Set</button>
+
+<p id="tips">
+WAVE 2 炸彈: 火→木→水
+<br>
+WAVE 3 炸彈: 木→水→火
+<br>
+WAVE 3 屬性: 水→火→木
+</p>
+
+
+
+
+<script>
+<!--Initialization Start-->
+var list = [1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c"];
+var counter = 0;
+for (var number in list){
+	counter++;
+	var imagehtml = '<img src="'+ list[number] +'.png" width="70" height="100%">';
+	document.getElementById("photolist").innerHTML += imagehtml;
+	
+	var id = list[number];
+	var buttonhtml = '<button id='+ id +' class="button" >'+ list[number] +' </button>';
+	document.getElementById("buttonlist").innerHTML += buttonhtml;
+	if (counter == 4){
+		document.getElementById("photolist").innerHTML += "<br>";
+		document.getElementById("buttonlist").innerHTML += "<br><br>";
+		counter = 0;
+	}
+};
+
+for (var number in list){
+	document.getElementById(list[number]).addEventListener("click", addtolist);
+};
+document.getElementById("nextset").disabled = true;
+<!--Initialization End-->
+
+var gotpattern = "0";
+function addtolist() {
+	if (gotpattern == "0"){
+		if (document.getElementById("list1").innerText.length != 8 ){
+			document.getElementById("list1").innerText += this.id;
+		} else {
+			if (document.getElementById("list2").innerText.length <= document.getElementById("list3").innerText.length){
+				if (document.getElementById("list2").innerText.length != 8){
+					document.getElementById("list2").innerText += this.id;
+				}
+			} else {
+				if (document.getElementById("list3").innerText.length != 8){
+					document.getElementById("list3").innerText += this.id;
+				}
+			}
+		}
+	} else{
+		if (document.getElementById("list2").innerText.length != 8){
+			document.getElementById("list2").innerText += this.id;
+		}
+	}
+}
+
+document.getElementById("getpattern").addEventListener("click", getpattern);
+
+var samplelist1 = [];
+var samplelist2 = [];
+var nextlist = [];
+var patternlist = [];
+var finallist = [];
+
+function getpattern(){
+	document.getElementById("getpattern").disabled = true;
+	document.getElementById("nextset").disabled = false;
+	gotpattern = "1";
+	for (var i = 0; i<8; i++){
+		samplelist1[i] = document.getElementById("list1").innerText[i];
+		samplelist2[i] = document.getElementById("list3").innerText[i];
+		nextlist[i] = document.getElementById("list2").innerText[i];
+	}
+	for (var i = 0; i<8; i++){
+		for (var j = 0; j<8; j++){
+			if (samplelist1[i] == samplelist2[j]){
+				patternlist[i] = j;
+				j = 8;
+			}
+		}
+	}
+	document.getElementById("sentense1").innerText = "下兩回合的抽牌次序";
+	document.getElementById("sentense2").innerText = "下兩回合的放牌次序";
+	document.getElementById("sentense3").innerText = "抽牌次序";
+	var patternhtml = "";
+	for (var i = 0; i<8; i++){
+		patternhtml += i+1;
+		patternhtml += "->";
+		patternhtml += patternlist[i]+1;
+		patternhtml += "<br>";
+	}
+	document.getElementById("list3").innerHTML = patternhtml;
+	document.getElementById("list2").innerHTML = "";
+	document.getElementById("list1").innerHTML = "";
+	
+	for (var i = 0; i<8; i++){
+		for (var j = 0; j<8; j++){
+			if (i == patternlist[j]){
+				finallist[i] = nextlist[j];
+			}
+		}
+	}
+	
+	counter = 0;
+	for (var i = 0; i<8; i++){
+		var imagehtml = '<img src="'+ finallist[i] +'.png" width="70" height="100%">';
+		document.getElementById("list1").innerHTML += imagehtml;
+		counter++;
+		if (counter == 4){
+			document.getElementById("list1").innerHTML += "<br>";
+		}
+	}
+}
+
+document.getElementById("nextset").addEventListener("click", nextset);
+function nextset(){
+	for (var i = 0; i<8; i++){
+		nextlist[i] = document.getElementById("list2").innerText[i];
+	}
+	document.getElementById("list2").innerHTML = "";
+	document.getElementById("list1").innerHTML = "";
+	for (var i = 0; i<8; i++){
+		for (var j = 0; j<8; j++){
+			if (i == patternlist[j]){
+				finallist[i] = nextlist[j];
+			}
+		}
+	}
+	
+	counter = 0;
+	for (var i = 0; i<8; i++){
+		var imagehtml = '<img src="'+ finallist[i] +'.png" width="70" height="100%">';
+		document.getElementById("list1").innerHTML += imagehtml;
+		counter++;
+		if (counter == 4){
+			document.getElementById("list1").innerHTML += "<br>";
+		}
+	}
+}
+
+</script>
+<style>
+.button {
+	width: 70px;
+}
+</style>
+</body>
+</html> 
