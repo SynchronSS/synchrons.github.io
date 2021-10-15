@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <body>
 
 <h1>３．５周年マルチガチャラインアップ</h1>
 
 <button class="collapsible">火属性</button>
 <div class="content">
-  <p id="3.5fire">
-	<img src="../cards/1.png" class="responsive">
-  </p>
+  <p id="3.5fire"></p>
 </div>
 <button class="collapsible">水属性</button>
 <div class="content">
@@ -38,7 +37,7 @@ for (i = 0; i < coll.length; i++) {
     if (content.style.maxHeight){
       content.style.maxHeight = null;
     } else {
-      content.style.maxHeight = content.scrollHeight + "px";
+      content.style.maxHeight = 1000 + "px";
     } 
   });
 }
@@ -94,7 +93,7 @@ for (var number in fire){
 
 .responsive {
   width: 100%;
-  max-width: 80;
+  max-width: 80px;
   height: auto;
 }
 </style>
