@@ -2,16 +2,101 @@
 <html>
 <body>
 
-<p><h1>目錄</h1></p>
+<h1>３．５周年マルチガチャラインアップ</h1>
 
-<a href="./drawing_simulator/drawing_simulator.html" target="_blank">抽牌模擬器</a> 
-
-
-
-
+<button class="collapsible">火属性</button>
+<div class="content">
+  <p id="3.5fire">
+	<img src="../cards/1.png" class="responsive">
+  </p>
+</div>
+<button class="collapsible">水属性</button>
+<div class="content">
+  <p id="3.5water">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+<button class="collapsible">木属性</button>
+<div class="content">
+  <p id="3.5wind">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+<button class="collapsible">光属性</button>
+<div class="content">
+  <p id="3.5light">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+<button class="collapsible">暗属性</button>
+<div class="content">
+  <p id="3.5dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
 
 <script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+
+var fire = [1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c"];
+var water = [1];
+var wind = [1];
+var light = [1];
+var dark = [1];
+
+for (var number in fire){
+	var imagehtml = '<img src="../cards/'+ fire[number] +'.png"  class="responsive" width="70" height="100%">';
+	document.getElementById("3.5fire").innerHTML += imagehtml;
+};
 
 </script>
+<style>
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+
+.responsive {
+  width: 100%;
+  max-width: 80;
+  height: auto;
+}
+</style>
 </body>
 </html> 
