@@ -64,12 +64,12 @@ function addtolist(i){
 for (int i = 0; i<=42; i++){
 	var imagehtml = '<img src="../cards/'+ i +'.png" onclick="addtolist('+ i +')" class="responsive" width="70" height="100%">';
 	document.getElementById("3.5fire").innerHTML += imagehtml;
-};
+}
 
 for (int i = 43; i<=81; i++){
 	var imagehtml = '<img src="../cards/'+ i +'.png" onclick="addtolist('+ i +')" class="responsive" width="70" height="100%">';
 	document.getElementById("3.5water").innerHTML += imagehtml;
-};
+}
 
 for (var number in wind){
 	var imagehtml = '<img src="../cards/'+ wind[number] +'.png" onclick="addtolist('+ wind[number] +')" class="responsive" width="70" height="100%">';
