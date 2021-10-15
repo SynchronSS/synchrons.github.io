@@ -13,20 +13,23 @@
 </div>
 <button class="collapsible">水属性</button>
 <div class="content">
-  <p id="3.5water">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <p id="3.5water"></p>
 </div>
 <button class="collapsible">木属性</button>
 <div class="content">
-  <p id="3.5wind">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <p id="3.5wind"></p>
 </div>
 <button class="collapsible">光属性</button>
 <div class="content">
-  <p id="3.5light">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <p id="3.5light"></p>
 </div>
 <button class="collapsible">暗属性</button>
 <div class="content">
-  <p id="3.5dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <p id="3.5dark"></p>
 </div>
+
+<p>マイリスト</p>
+<p id = "mylist"></p>
 
 <script>
 var coll = document.getElementsByClassName("collapsible");
@@ -44,34 +47,44 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 
-var fire = [1];
+function remove(el) {
+	var element = el;
+	element.remove();
+}
+
+function addtolist(i){
+	var imagehtml = '<img src="../cards/'+ i +'.png" onclick="remove(this)" class="responsive" width="70" height="100%">';
+	document.getElementById("mylist").innerHTML += imagehtml;
+}
+
+var fire = [1, 2, 3, 4, 5];
 var water = [1];
 var wind = [1];
 var light = [1];
 var dark = [1];
 
 for (var number in fire){
-	var imagehtml = '<img src="../cards/'+ fire[number] +'.png"  class="responsive" width="70" height="100%">';
+	var imagehtml = '<img src="../cards/'+ fire[number] +'.png" onclick="addtolist('+ fire[number] +')" class="responsive" width="70" height="100%">';
 	document.getElementById("3.5fire").innerHTML += imagehtml;
 };
 
 for (var number in water){
-	var imagehtml = '<img src="../cards/'+ water[number] +'.png"  class="responsive" width="70" height="100%">';
+	var imagehtml = '<img src="../cards/'+ water[number] +'.png" onclick="addtolist('+ water[number] +')" class="responsive" width="70" height="100%">';
 	document.getElementById("3.5water").innerHTML += imagehtml;
 };
 
 for (var number in wind){
-	var imagehtml = '<img src="../cards/'+ wind[number] +'.png"  class="responsive" width="70" height="100%">';
+	var imagehtml = '<img src="../cards/'+ wind[number] +'.png" onclick="addtolist('+ wind[number] +')" class="responsive" width="70" height="100%">';
 	document.getElementById("3.5wind").innerHTML += imagehtml;
 };
 
 for (var number in light){
-	var imagehtml = '<img src="../cards/'+ light[number] +'.png"  class="responsive" width="70" height="100%">';
+	var imagehtml = '<img src="../cards/'+ light[number] +'.png" onclick="addtolist('+ light[number] +')" class="responsive" width="70" height="100%">';
 	document.getElementById("3.5light").innerHTML += imagehtml;
 };
 
 for (var number in dark){
-	var imagehtml = '<img src="../cards/'+ dark[number] +'.png"  class="responsive" width="70" height="100%">';
+	var imagehtml = '<img src="../cards/'+ dark[number] +'.png" onclick="addtolist('+ dark[number] +')" class="responsive" width="70" height="100%">';
 	document.getElementById("3.5dark").innerHTML += imagehtml;
 };
 
