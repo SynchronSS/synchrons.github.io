@@ -63,10 +63,16 @@ var wind = [1];
 var light = [1];
 var dark = [1];
 
+for (let j = 1; j <= 42; j++) {
+	var imagehtml = '<img src="../cards/'+ j +'.png" onclick="addtolist('+ j +')" class="responsive" width="70" height="100%">';
+	document.getElementById("3.5fire").innerHTML += imagehtml;
+}
+/*
 for (var number in fire){
 	var imagehtml = '<img src="../cards/'+ fire[number] +'.png" onclick="addtolist('+ fire[number] +')" class="responsive" width="70" height="100%">';
 	document.getElementById("3.5fire").innerHTML += imagehtml;
 };
+*/
 
 for (var number in water){
 	var imagehtml = '<img src="../cards/'+ water[number] +'.png" onclick="addtolist('+ water[number] +')" class="responsive" width="70" height="100%">';
