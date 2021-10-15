@@ -57,8 +57,6 @@ function addtolist(i){
 	document.getElementById("mylist").innerHTML += imagehtml;
 }
 
-var fire = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42];
-var water = [1];
 var wind = [1];
 var light = [1];
 var dark = [1];
@@ -67,17 +65,22 @@ for (let j = 1; j <= 42; j++) {
 	var imagehtml = '<img src="../cards/'+ j +'.png" onclick="addtolist('+ j +')" class="responsive" width="70" height="100%">';
 	document.getElementById("3.5fire").innerHTML += imagehtml;
 }
+
+for (let j = 43; j <= 81; j++) {
+	var imagehtml = '<img src="../cards/'+ j +'.png" onclick="addtolist('+ j +')" class="responsive" width="70" height="100%">';
+	document.getElementById("3.5water").innerHTML += imagehtml;
+}
 /*
 for (var number in fire){
 	var imagehtml = '<img src="../cards/'+ fire[number] +'.png" onclick="addtolist('+ fire[number] +')" class="responsive" width="70" height="100%">';
 	document.getElementById("3.5fire").innerHTML += imagehtml;
 };
-*/
 
 for (var number in water){
 	var imagehtml = '<img src="../cards/'+ water[number] +'.png" onclick="addtolist('+ water[number] +')" class="responsive" width="70" height="100%">';
 	document.getElementById("3.5water").innerHTML += imagehtml;
 };
+*/
 
 for (var number in wind){
 	var imagehtml = '<img src="../cards/'+ wind[number] +'.png" onclick="addtolist('+ wind[number] +')" class="responsive" width="70" height="100%">';
