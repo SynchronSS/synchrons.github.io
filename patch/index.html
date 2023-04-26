@@ -1,9 +1,20 @@
-<?php
-echo "test";
-?>
+
 <!DOCTYPE html>
 <html>
 <body>
+<p id="dateList"></p>
+<p id="content"></p>
+
+<script>
+const testFolder = './';
+const fs = require('fs');
+
+fs.readdir(testFolder, (err, files) => {
+  files.forEach(file => {
+    console.log(file);
+  });
+});
+</script>
 
 </body>
 </html> 
